@@ -50,6 +50,8 @@
   </style>
   <link rel="stylesheet" href="OSMBuildings/OSMBuildings.css">
   <script src="OSMBuildings/OSMBuildings.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script type="text/javascript" src="jsonConverter.js"></script>
 </head>
 
 <body>
@@ -130,6 +132,13 @@
       }
     });
   }
+  $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
+  }).done(function (esriJson) {
+    geoJson =  esriConverter().toGeoJson(esriJson);
+    // format is new OSMBuildings(map).set(geoJson feature collection)
+    });
+    console.log(geoJson);
+  });
 </script>
 </body>
 </html>
