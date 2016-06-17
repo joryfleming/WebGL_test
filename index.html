@@ -98,6 +98,7 @@
     }
   );
   osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
+  osmb.addGeoJSON(geoJson);
   //***************************************************************************
   map.on('pointermove', function(e) {
     var id = osmb.getTarget(e.x, e.y, function(id) {
