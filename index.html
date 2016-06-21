@@ -99,7 +99,10 @@
   }).done(function (esriJson) {
     geoJson =  esriConverter().toGeoJson(esriJson);
     console.log(geoJson);
-    osmb.addGeoJSON(geoJson);
+    osmb.addGeoJSON(geoJson,
+    {
+      color: '#9ecae1'
+    });
   });
 
   //***************************************************************************
